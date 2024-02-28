@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.rule" id="logic_heads_activities_rules">
+            <field name="name">Heads Activities Rules</field>
+            <field name="model_id" ref="model_heads_activities"/>
+            <field name="domain_force">['|',('create_uid.id', '=', user.id),('department_head_id.id','=', user.employee_id.id)]</field>
+            <field name="groups" eval="[(4, ref('heads_activities.heads_activities'))]"/>
+        </record>
+    </data>
+</odoo>

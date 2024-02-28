@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="model_logic_heads_activities_form" model="ir.ui.view">
+        <field name="name">Activities</field>
+        <field name="model">heads.activities</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Types">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_confirm" string="Confirm" type="object" states="draft" class="oe_highlight"/>
+                    <button name="action_approve" string="Approve" type="object" attrs="{'invisible': ['|',('state', '!=', 'in_progress'), ('type', '!=', 'approval')]}" class="oe_highlight"/>
+                    <button name="action_reject" string="Reject" type="object" attrs="{'invisible': ['|',('state', '!=', 'in_progress'), ('type', '!=', 'approval')]}"/>
+                    <button name="action_complete" string="Complete" type="object" class="oe_highlight" attrs="{'invisible': ['|',('state', '!=', 'in_progress'), ('type', '!=', 'request')]}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="department_head_id"/>
+                            <field name="type"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="model_logic_heads_activities_list" model="ir.ui.view">
+        <field name="name">Activities</field>
+        <field name="model">heads.activities</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="department_id"/>
+                <field name="type"/>
+                <field name="description"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="model_logic_heads_activities_action">
+        <field name="name">Activities</field>
+        <field name="res_model">heads.activities</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Activities"
+              id="model_logic_heads_activities_main_menu"
+              web_icon="heads_activities/static/description/icon.png"
+              sequence="1"/>
+
+    <menuitem name="Activities"
+              id="model_logic_heads_activities_menu"
+              action="model_logic_heads_activities_action"
+              parent="model_logic_heads_activities_main_menu"
+              sequence="2"/>
+
+</odoo>

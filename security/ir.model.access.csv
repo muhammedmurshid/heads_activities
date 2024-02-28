@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_heads_activities,access_heads_activities,model_heads_activities,heads_activities,1,1,1,1
+access_heads_activities_admin,access_heads_activities,model_heads_activities,admin_activities,1,1,1,1

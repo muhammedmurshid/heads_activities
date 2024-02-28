@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="0">
+        <record model="ir.module.category" id="module_heads_activities">
+            <field name="name">Heads Activities</field>
+            <field name="sequence">20</field>
+            <field name="visible" eval="0"/>
+        </record>
+        <record id="heads_activities" model="res.groups">
+            <field name="name">Heads</field>
+            <field name="category_id" ref="module_heads_activities"/>
+        </record>
+        <record id="admin_activities" model="res.groups">
+            <field name="name">Admin</field>
+            <field name="category_id" ref="module_heads_activities"/>
+        </record>
+    </data>
+</odoo>
